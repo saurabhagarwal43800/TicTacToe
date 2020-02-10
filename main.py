@@ -93,3 +93,21 @@ def replace_p2(pos,mat_dict):
 
     elif pos=='9':
         mat_dict['i']="O"
+        
+#To check the result and exit if any player won!
+
+def check_win(mat_dict):
+    if (mat_dict['a']=='X' and mat_dict['b']=='X' and mat_dict['c']=='X') or (mat_dict['d']=='X' and mat_dict['e']=='X' and mat_dict['f']=='X') or (mat_dict['g']=='X' and mat_dict['h']=='X' and mat_dict['i']=='X'):
+        return "Congratulations Player1 Won!"
+    elif (mat_dict['a']=='X' and mat_dict['d']=='X' and mat_dict['g']=='X') or (mat_dict['b']=='X' and mat_dict['e']=='X' and mat_dict['h']=='X') or (mat_dict['c']=='X' and mat_dict['f']=='X' and mat_dict['i']=='X'):
+        return "Congratulations Player1 Won!"
+    elif (mat_dict['a']=='X' and mat_dict['e']=='X' and mat_dict['i']=='X') or (mat_dict['c']=='X' and mat_dict['e']=='X' and mat_dict['g']=='X'):
+        return "Congratulations Player1 Won!"
+    if (mat_dict['a']=='O' and mat_dict['b']=='O' and mat_dict['c']=='O') or (mat_dict['d']=='O' and mat_dict['e']=='O' and mat_dict['f']=='O') or (mat_dict['g']=='O' and mat_dict['h']=='O' and mat_dict['i']=='O'):
+        return "Congratulations Player2 Won!"
+    elif (mat_dict['a']=='O' and mat_dict['d']=='O' and mat_dict['g']=='O') or (mat_dict['b']=='O' and mat_dict['e']=='O' and mat_dict['h']=='O') or (mat_dict['c']=='O' and mat_dict['f']=='O' and mat_dict['i']=='O'):
+        return "Congratulations Player2 Won!"
+    elif (mat_dict['a']=='O' and mat_dict['e']=='O' and mat_dict['i']=='O') or (mat_dict['c']=='O' and mat_dict['e']=='O' and mat_dict['g']=='O'):
+        return "Congratulations Player2 Won!"
+    elif mat_dict['a']!=" " and mat_dict['b']!=" " and mat_dict['c']!=" " and mat_dict['d']!=" " and mat_dict['e']!=" " and mat_dict['f']!=" " and mat_dict['g']!=" " and mat_dict['h']!=" " and mat_dict['i']!=" ":
+        return "There is a Tie!"
