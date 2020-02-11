@@ -109,5 +109,40 @@ def check_win(mat_dict):
         return "Congratulations Player2 Won!"
     elif (mat_dict['a']=='O' and mat_dict['e']=='O' and mat_dict['i']=='O') or (mat_dict['c']=='O' and mat_dict['e']=='O' and mat_dict['g']=='O'):
         return "Congratulations Player2 Won!"
-    elif mat_dict['a']!=" " and mat_dict['b']!=" " and mat_dict['c']!=" " and mat_dict['d']!=" " and mat_dict['e']!=" " and mat_dict['f']!=" " and mat_dict['g']!=" " and mat_dict['h']!=" " and mat_dict['i']!=" ":
-        return "There is a Tie!"
+ 
+#Ask the input from the player to play the game and if he wins then print a message to show who won the game       
+#import os
+def chance():
+    mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
+    game()
+    for i in range(1,10):
+        if i%2!=0:
+            #os.system('clear')
+            #Player1 chance
+            pos=input("Press the number Player1 to make a move")
+            replace_p1(pos,mat_dict)
+        else:
+            #Player2 chance
+            #os.system('clear')
+            pos=input("Press the number Player2 to make a move:")
+            replace_p2(pos,mat_dict)
+        board(mat_dict)
+        win=check_win(mat_dict)
+        if win=="Congratulations Player1 Won!" or win=="Congratulations Player2 Won!" or win=="There is a Tie!":
+            print(win)
+            break
+        else:
+            continue 
+
+#Ask players that he wants to be player1 or player2 and if he chooses any other choice then it will show invalid choice
+def assign_player():  
+    pl=input("Press 1 for Player1 or Press 2 for Player2:")
+    if pl=="1":
+        return "Now you are Player1"
+    elif pl=="2":
+        return "Now you are Player2"
+    else:
+        print("Invalid Choice")
+        return assign_player()
+    
+
