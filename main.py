@@ -109,24 +109,48 @@ def check_win(mat_dict):
         return "Congratulations Player2 Won!"
     elif (mat_dict['a']=='O' and mat_dict['e']=='O' and mat_dict['i']=='O') or (mat_dict['c']=='O' and mat_dict['e']=='O' and mat_dict['g']=='O'):
         return "Congratulations Player2 Won!"
+    elif mat_dict['a']!=" " and mat_dict['b']!=" " and mat_dict['c']!=" " and mat_dict['d']!=" " and mat_dict['e']!=" " and mat_dict['f']!=" " and mat_dict['g']!=" " and mat_dict['h']!=" " and mat_dict['i']!=" ":
+        return "There is a Tie!"
  
-#Ask the input from the player to play the game and if he wins then print a message to show who won the game    
-   
-#import os
-def chance():
+#If player1 get a first chance to start the game
+          
+def chance_p1():
     mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
+    check_list=[]
     game()
-    for i in range(1,10):
+    i=1
+    while(i!=0):
         if i%2!=0:
-            #os.system('clear')
             #Player1 chance
             pos=input("Press the number Player1 to make a move")
-            replace_p1(pos,mat_dict)
+            pos=int(pos)
+            if pos>=1 and pos<=9:
+                if pos not in check_list:
+                    check_list.append(pos)
+                    replace_p1(str(pos),mat_dict)
+                    i+=1
+                else:
+                    print("You cannot make the move at the reserved location")
+            
+            else:
+                print("Invalid Choice")
+                
         else:
             #Player2 chance
             #os.system('clear')
             pos=input("Press the number Player2 to make a move:")
-            replace_p2(pos,mat_dict)
+            pos=int(pos)
+            if pos>=1 and pos<=9:
+                if pos not in check_list:
+                    check_list.append(pos)
+                    replace_p2(str(pos),mat_dict)
+                    i+=1
+                else:
+                    print("You cannot make the move at the reserved location")
+            
+            else:
+                print("Invalid Choice")
+                
         board(mat_dict)
         win=check_win(mat_dict)
         if win=="Congratulations Player1 Won!" or win=="Congratulations Player2 Won!" or win=="There is a Tie!":
@@ -134,7 +158,54 @@ def chance():
             break
         else:
             continue 
-
+          
+#If player2 get a first chance to start the game
+          
+def chance_p2():
+    mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
+    check_list=[]
+    game()
+    i=1
+    while(i!=0):
+        if i%2==0:
+            #os.system('clear')
+            #Player1 chance
+            pos=input("Press the number Player1 to make a move")
+            pos=int(pos)
+            if pos>=1 and pos<=9:
+                if pos not in check_list:
+                    check_list.append(pos)
+                    replace_p1(str(pos),mat_dict)
+                    i+=1
+                else:
+                    print("You cannot make the move at the reserved location")
+            
+            else:
+                print("Invalid Choice")
+                
+        else:
+            #Player2 chance
+            pos=input("Press the number Player2 to make a move:")
+            pos=int(pos)
+            if pos>=1 and pos<=9:
+                if pos not in check_list:
+                    check_list.append(pos)
+                    replace_p2(str(pos),mat_dict)
+                    i+=1
+                else:
+                    print("You cannot make the move at the reserved location")
+            
+            else:
+                print("Invalid Choice")
+                
+        board(mat_dict)
+        win=check_win(mat_dict)
+        if win=="Congratulations Player1 Won!" or win=="Congratulations Player2 Won!" or win=="There is a Tie!":
+            print(win)
+            break
+        else:
+            continue 
+          
 #Ask players that he wants to be player1 or player2 and if he chooses any other choice then it will show invalid choice
 
 def assign_player():  
@@ -148,18 +219,27 @@ def assign_player():
         return assign_player()
 
 #Ask player if he wants to play the game or not. If yes then continue the game and if no then exit       
+
 def choice():
     print("Do you want to play the Game?")
-    ch=input("Yes or No:")
-    if ch=="Yes" or ch=="yes" or ch=="YES":
-        print("Choose the player number")
-        s=assign_player()
-        print(s)
-        chance()
+    ch=input("yes or no:\n")
+    if ch!="yes" and ch!="no" and ch!="Yes" and ch!="No" and ch!="YES" and ch!="NO":
+        print("Invalid input")
         choice()
     else:
-        print("Thank you for playing")
-    elif mat_dict['a']!=" " and mat_dict['b']!=" " and mat_dict['c']!=" " and mat_dict['d']!=" " and mat_dict['e']!=" " and mat_dict['f']!=" " and mat_dict['g']!=" " and mat_dict['h']!=" " and mat_dict['i']!=" ":
-        return "There is a Tie!"
+        if ch=="Yes" or ch=="yes" or ch=="YES":
+            print("Choose the player number")
+            s=assign_player()
+            print(s)
+            if s=="Now you are Player1":
+                chance_p1()
+            else:
+                chance_p2()
+            choice()
+        elif ch=="No" or ch=="no" or ch=="NO":
+            print("Have a good day!")
+        else:
+            print("Thank you for playing")
+    
     
 
