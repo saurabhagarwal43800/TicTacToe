@@ -17,8 +17,10 @@ def game():
     
 #Replacing the value of board
 
+from IPython.display import clear_output
 def board(mat_dict):
-
+    #mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
+    clear_output()
     print("     |     |     ")
     print(f"  {mat_dict['a']}  |  {mat_dict['b']}  |  {mat_dict['c']}  ")
     print("     |     |     ")
@@ -221,6 +223,7 @@ def assign_player():
 #Ask player if he wants to play the game or not. If yes then continue the game and if no then exit       
 
 def choice():
+    print("---------------WELCOME TO TIC TAC TOE---------------")
     print("Do you want to play the Game?")
     ch=input("yes or no:\n")
     if ch!="yes" and ch!="no" and ch!="Yes" and ch!="No" and ch!="YES" and ch!="NO":
@@ -240,6 +243,8 @@ def choice():
             print("Have a good day!")
         else:
             print("Thank you for playing")
+          
+choice()
     
     
 
