@@ -116,6 +116,8 @@ def check_win(mat_dict):
  
 #If player1 get a first chance to start the game
           
+from IPython.display import clear_output
+import time
 def chance_p1():
     mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
     check_list=[]
@@ -157,12 +159,16 @@ def chance_p1():
         win=check_win(mat_dict)
         if win=="Congratulations Player1 Won!" or win=="Congratulations Player2 Won!" or win=="There is a Tie!":
             print(win)
+            time.sleep(3)
+            clear_output()
             break
         else:
             continue 
           
 #If player2 get a first chance to start the game
-          
+
+from IPython.display import clear_output
+import time          
 def chance_p2():
     mat_dict={'a':" ",'b':" ",'c':" ",'d':" ",'e':" ",'f':" ",'g':" ",'h':" ",'i':" "}
     check_list=[]
@@ -204,6 +210,8 @@ def chance_p2():
         win=check_win(mat_dict)
         if win=="Congratulations Player1 Won!" or win=="Congratulations Player2 Won!" or win=="There is a Tie!":
             print(win)
+            time.sleep(3)
+            clear_output()
             break
         else:
             continue 
